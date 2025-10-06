@@ -3,16 +3,8 @@
 % DC Dima 2023
 % note: for fMRI, the structure is data/subject/session
 
-% prior to this script fmriprep is run for each subject and session with the following command:
-% singularity run --cleanenv ./my_images/fmriprep-20.2.7.simg ~/Windows11/MultimodalAction/multi_action/fmri/data | 
-% ~/Windows11/MultimodalAction/multi_action/fmri/preproc/ participant --participant-label sub-04 | 
-% --fs-license-file  ~/freesurfer/license.txt --output-spaces MNI152NLin2009cAsym T1w | 
-% --work-dir ~/Windows11/MultimodalAction/multi_action/fmri
-
 %% set paths
 clear; clc; close all
-set(0,'DefaultAxesFontName','Arial')
-set(0,'DefaultFigureRenderer','painters')
 
 %add path to GLMsingle; assumes running from script directory
 wpath = pwd;
@@ -59,7 +51,3 @@ fmri_searchlight_rsa(savepath,sub_idx)
 %% EEG-fMRI fusion
 
 fmri_fusion(savepath,sub_idx)
-
-%% roi analysis
-
-fmri_roi_rdm(savepath,sub_idx)
